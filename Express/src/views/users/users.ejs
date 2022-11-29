@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!------------Head------------>
+<%- include('./../partials/head') %>
+</head>
+<body>
+  <header>
+<!------------Header------------>
+    <%- include('./../partials/header') %>
+  </header>
+  <main>
+      <h3 class="offers">USUARIOS</h3>
+      <div class="section-cards">
+        <%users.forEach(function(users){%>
+           <div class="card">
+            <div class="imgBox">
+               <img src="images/usuarios/<%=users.image%>" alt="" class="product-img">
+            </div>
+            <div class="contentBox">
+              <h3><%=users.name + ' ' + users.lastname%></h3>
+              <a href="/users/userProfile/<%=users.idusers%>" class="buy">VER PERFIL</a>
+            </div>
+            </div>
+        <% }) %>
+      </div>
+  </main>
+
+<!------------Footer------------>
+
+  <footer>
+    <%- include('./../partials/footer') %>
+  </footer>
+</body>
+</html>

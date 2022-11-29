@@ -1,0 +1,41 @@
+{
+  "name": "grupo-2-x-supply",
+  "version": "1.0.0",
+  "description": "![Logo](https://user-images.githubusercontent.com/100803671/161872447-fc827daf-f354-400a-ad87-ebd101acdedc.png)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waltercba21/grupo-2-X-Supply.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waltercba21/grupo-2-X-Supply/issues"
+  },
+  "homepage": "https://github.com/waltercba21/grupo-2-X-Supply#readme",
+  "dependencies": {
+    "aos": "^2.3.4",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.7",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "fs": "^0.0.1-security",
+    "method-override": "^3.0.0",
+    "multer": "^1.4.4",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.19",
+    "path": "^0.12.7",
+    "save": "^2.4.0",
+    "sequelize": "^6.20.1",
+    "sequelize-cli": "^6.4.1",
+    "side-channel": "^1.0.4"
+  }
+}

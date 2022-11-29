@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!------------Head------------>
+<%- include('./../partials/head') %>
+</head>
+
+<body>
+  <header>
+    <!------------Header------------>
+    <%- include('./../partials/header') %>
+  </header>
+
+  
+
+  <div class="containerAdm"> 
+
+    <div class="crearProductos">
+      <h3 class="">EDITAR USUARIO</h3>
+      <form action="./<%= user.idusers%>?_method=PUT" method="POST" id="userForm" enctype="multipart/form-data">
+        <ul class="errores"></ul>
+        <input type="text" placeholder="Nombre" name="name" id="userName" value="<%= user.name %>" class="" required/>
+        <br>
+        <input type="text" placeholder="Apellido" name="lastname" id="userLastName" value="<%= user.lastname %>" class="" required/>
+        <br>
+        <input type="text" placeholder="Email" class="" name="email" value="<%= user.email %>" required/>
+        <br>
+        <input type="text" placeholder="Dirección" class="" name="address" value="<%= user.address %>" required/>
+        <br>
+        <input type="text" placeholder="Phone" class="" name="phone" value="<%= user.phone %>" required/>
+        <br>
+        <label for="imagenUsuario">Foto de perfil</label>
+        <input id="imagenUsuario" type="file" name="image" accept="jpg, png, jpeg" single/>
+        <br>
+        <button type="submit" class="btn">Editar</button>
+      </form>  
+    </div>  
+</div>
+
+  <!------------Footer------------>
+  <footer>
+    <%- include('./../partials/footer') %>
+  </footer>
+  
+<script>
+window.onload = function () {
+  
+  let name = document.querySelector("#productName");
+  let form = document.querySelector("#productForm");
+  let desc = document.querySelector("#productDesc");
+  let file = document.querySelector("#imagenProducto");
+  
+
+  name.focus();
+
+  form.addEventListener("submit", function (e) {
+    
+    let errors = [];
+
+    if (name.value == "") {
+      errors.push("El campo nombre es obligatorio");
+      name.classList.add("is-invalid");
+    }
+    if (name.value.length < 5 && name.value.length > 0) {
+      errors.push("Nombre muy corto");
+      name.classList.add("is-invalid");
+    } else {
+      name.classList.remove("is-invalid");
+      name.classList.add("is-valid");
+      
+    }
+
+    if (desc.value.length <20 && desc.value.length > 0) {
+      errors.push("Descripcion muy corta");
+      desc.classList.add("is-invalid");
+    } else {
+      desc.classList.remove("is-invalid");
+      desc.classList.add("is-valid");
+      
+    }
+    
+    let allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+    let filePath = file.value;
+
+    if (!allowedExtensions.exec(filePath)) {
+      errors.push("Por favor usar un archivo valido para la imagen");
+      file.classList.add("is-invalid");
+    } else {
+      file.classList.remove("is-invalid");
+      file.classList.add("is-valid");
+    }
+    
+
+    
+
+    if (errors.length > 0) {
+      e.preventDefault();
+      
+      let errores = document.querySelector(".errores");
+      errores.classList.add("alert-warning");
+      errores.innerHTML = "";
+
+      for (let i = 0; i < errors.length; i++) {
+        let li = document.createElement("li");
+        li.innerHTML = errors[i];
+        errores.appendChild(li);
+      }
+    } else {
+      
+      ;
+    }
+  });
+};
+
+</script>
+
+</body>
+
+</html>

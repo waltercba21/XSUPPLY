@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!------------Head------------>
+<%- include('./../partials/head') %>
+</head>
+
+<body>
+  <header>
+    <!------------Header------------>
+    <%- include('./../partials/header') %>
+  </header>
+
+  <main>
+    <!------------LOGIN------------>
+    <div class="container">
+      <img data-aos="fade-right" src="/images/foto1.jpg" alt="">
+    
+      <!---Saludo Inicial-->
+      <!---Datos para el inicio de sesión-->
+      <div class="login" data-aos="fade-left">
+      <form action="/users/login" method="POST" id="loginForm" enctype="multipart/form-data" >
+        <h2 class="saludo">INGRESAR</h2>
+        <ul class="errores"></ul>
+        <div class="datos">
+          <label for="email" class="email"></label>
+        <input type="email" name="email" id="loginEmail" placeholder="E-Mail">
+        <% if (locals.errors && errors.email) { %>
+          <div class="feedback">
+            <%= errors.email.msg %> 
+          </div>
+         
+        <% } %>
+     
+        <label for="password" class="password"></label>
+        <input type="password" name="password" id="loginPassword" placeholder="Contraseña">
+
+
+        
+        <!---Boton de INICIAR SESION-->
+        
+          <button type="submit" class="btn" >Iniciar Sesión </button>
+        </div>
+        <!---Si el usuario no tiene cuenta o perdio su contraseña-->
+        
+          <span class="cuenta">No tienes cuenta?<a class="registrarte" href="/users/register" > Registrate</a></span> <br>
+          <br><br>
+          
+          <br>
+      </form>
+      </div>
+    </div>
+</main>
+
+<!------------Footer------------>
+<footer>
+  <%- include('./../partials/footer') %>
+</footer>
+
+<script>
+  window.onload = function () {
+  
+  let email = document.querySelector("#loginEmail");
+  let form = document.querySelector("#loginForm");
+  let password = document.querySelector("#loginPassword");
+  
+
+  email.focus();
+
+  form.addEventListener("submit", function (e) {
+    
+    const reg =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let errors = [];
+
+
+    if (reg.test(email.value) === false && email.value !== "") {
+      errors.push("El email no es valido");
+      email.classList.add("is-invalid");
+    }
+    if (email.value == "") {
+      errors.push("El campo email es obligatorio");
+      email.classList.add("is-invalid");
+    } else {
+      email.classList.remove("is-invalid");
+      email.classList.add("is-valid");
+      email.focus();
+    }
+
+    if (password.value == "") {
+      errors.push("El campo contraseña es obligatorio");
+      password.classList.add("is-invalid");
+    } else {
+      password.classList.remove("is-invalid");
+      password.classList.add("is-valid");
+    }
+
+    
+
+    if (errors.length > 0) {
+      e.preventDefault();
+      
+      let errores = document.querySelector(".errores");
+      errores.classList.add("alert-warning");
+      errores.innerHTML = "";
+
+      for (let i = 0; i < errors.length; i++) {
+        let li = document.createElement("li");
+        li.innerHTML = errors[i];
+        errores.appendChild(li);
+      }
+    } else {
+      ;
+    }
+  });
+};
+</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+   
+    AOS.init();
+  </script>
+</body>
+</html>

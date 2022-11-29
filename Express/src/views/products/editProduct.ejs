@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!------------Head------------>
+<%- include('./../partials/head') %>
+</head>
+
+<body>
+  <header>
+    <!------------Header------------>
+    <%- include('./../partials/header') %>
+  </header>
+
+  
+
+  <div class="containerAdm"> 
+
+    <div class="crearProductos">
+      <h3 class="">EDITAR PRODUCTO</h3>
+      <form action="./<%= product.idproducts%>?_method=PUT" method="POST" id="productForm" enctype="multipart/form-data">
+        <ul class="errores"></ul>
+        <input type="text" placeholder="Nombre del producto" name="name" id="productName" value="<%= product.name%>" class="" required/>
+        <br>
+        <select name="brand">
+          <% for (let i = 0; i < brands.length; i++){ %>
+            <option value="<%=brands[i].idbrands%>">
+              <%=brands[i].name%>
+            </option>
+          <% } %>
+        </select>
+        <br>
+        <input type="text" placeholder="Sabor" class="" name="taste" value="<%= product.taste%>" required/>
+        <br>
+        <input type="text" placeholder="Peso" class="" name="weight" value="<%= product.weight%>" required/>
+        <br>
+        <input type="text" placeholder="Precio Regular" class="" name="price" value="<%= product.price%>" required/>
+        <br>
+        <input type="text" placeholder="Cantidad" class="" name="quantity" value="<%= product.quantity%>" required/>
+        <br>
+        <select name="category">
+          <% for (let i = 0; i < category.length; i++){ %>
+            <option value="<%=category[i].idcategories%>">
+              <%=category[i].name%>
+            </option>
+          <% } %>
+        </select>
+        <br>
+        <input type="text" placeholder="Modo de Uso" id="productDesc" name="utility" value="<%= product.utility%>" required/>
+        <br>
+        <input type="text" placeholder="Objetivo" class="" name="purpose" value="<%= product.purpose%>" required/>
+        <br>
+        <label for="imagenProducto" >Imagen del producto</label>
+        <input id="imagenProducto" type="file" name="image" accept="jpg, png, jpeg" multiple/>
+        <br>
+        <button type="submit" class="btn">Editar</button>
+      </form>  
+    </div>  
+    <div class="crearProductos">
+      <form action="./<%= product.idproducts%>?_method=DELETE" method="POST" enctype="multipart/form-data">
+        <button type="submit" class="btn">Eliminar</button>
+      </form>
+    </div>
+  </div>
+
+  <!------------Footer------------>
+  <footer>
+    <%- include('./../partials/footer') %>
+  </footer>
+  
+<script>
+window.onload = function () {
+  
+  let name = document.querySelector("#productName");
+  let form = document.querySelector("#productForm");
+  let desc = document.querySelector("#productDesc");
+  let file = document.querySelector("#imagenProducto");
+  
+
+  name.focus();
+
+  form.addEventListener("submit", function (e) {
+    
+    let errors = [];
+
+    if (name.value == "") {
+      errors.push("El campo nombre es obligatorio");
+      name.classList.add("is-invalid");
+    }
+    if (name.value.length < 5 && name.value.length > 0) {
+      errors.push("Nombre muy corto");
+      name.classList.add("is-invalid");
+    } else {
+      name.classList.remove("is-invalid");
+      name.classList.add("is-valid");
+      
+    }
+
+    if (desc.value.length <20 && desc.value.length > 0) {
+      errors.push("Descripcion muy corta");
+      desc.classList.add("is-invalid");
+    } else {
+      desc.classList.remove("is-invalid");
+      desc.classList.add("is-valid");
+      
+    }
+    
+    let allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+    let filePath = file.value;
+
+    if (!allowedExtensions.exec(filePath)) {
+      errors.push("Por favor usar un archivo valido para la imagen");
+      file.classList.add("is-invalid");
+    } else {
+      file.classList.remove("is-invalid");
+      file.classList.add("is-valid");
+    }
+    
+
+    
+
+    if (errors.length > 0) {
+      e.preventDefault();
+      
+      let errores = document.querySelector(".errores");
+      errores.classList.add("alert-warning");
+      errores.innerHTML = "";
+
+      for (let i = 0; i < errors.length; i++) {
+        let li = document.createElement("li");
+        li.innerHTML = errors[i];
+        errores.appendChild(li);
+      }
+    } else {
+      
+      ;
+    }
+  });
+};
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!------------Head------------>
+  <head>
+        <%- include('./../partials/head') %>
+  </head>
+  
+  <body>
+    <!------------Header------------>
+    <header>
+      <%- include('./../partials/header')%>
+    </header> 
+    
+    <main>
+      <!------------Información del Usuario------------>
+      <section class="userContainer">
+        <h1 class="nombreUsuario"> Bienvenido <%= users.name + ' ' + users.lastname %>  </h1>
+        <div class="  ">
+
+          <img data-aos="fade-up" class = 'imgUsuario' src="../../images/usuarios/<%=users.image%>" alt="" />
+
+
+
+        </div>
+  
+        <div class="userDetail">
+          
+          <div>
+            <p><strong>Email:</strong> <%=users.email%></p> 
+            <p><strong>Dirección:</strong> <%=users.address%></p>
+            <p><strong>Teléfono:</strong><span><%=users.phone%></span></p>
+          </div> 
+        <br>
+          <div >
+           <a href="/products" class="profile-button">Ir A La Tienda</a>
+          </div>
+          <!------------Botones de navegación------------>
+          <div class="profile-nav">
+            <a class="profile-button" href="/products/createProduct">Crear Producto</a>
+            <a class="profile-button" href="/users/editUser/<%=users.idusers%>">Editar Usuario</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+<!------------Footer------------>
+<footer>
+    <%- include('./../partials/footer') %>
+  </footer>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+   
+    AOS.init();
+  </script>
+
+</body>
+</html>

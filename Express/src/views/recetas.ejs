@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!------------Head------------>
+<%- include('./partials/head') %>
+</head>
+
+<body>
+  <header>
+    <!------------Header------------>
+    <%- include('./partials/header') %>
+  </header>
+
+  <main>
+    <section class="about" id="about">
+        <div  class="row">
+            <div class="content" data-aos="fade-left">
+                <h3> HAMBURGUESAS VEGGIE </h3> <br/>
+                <h3 id="subtitle"> Ingredientes: </h3>    
+                    <ul>
+                        <li>250 grs de porotos negros</li>
+                        <li>1 taza de lentejas</li>
+                        <li>1 taza de arvejas</li>
+                        <li>2 huevos</li>
+                        <li>1 cebolla picada</li>
+                        <li>2 tazas de avena</li>
+                        <li>1/2 taza de semillas</li>
+                        <li>Especias a gusto</li>
+                    </ul>
+                <h3 id="subtitle"> Paso a paso: </h3>
+                    <ul>
+                        <li>Triturar los porotos</li>
+                        <li>Mezclar los porotos con los huevos. Revolver</li>
+                        <li>Agregar a la mezcla las lentejas y arvejas. Revolver</li>
+                        <li>Agregar el resto de los ingredientes hasta que se forme una masa homogénea</li>
+                        <li>Dar forma de hamburguesas a la masa</li>
+                        <li>Colocarlas en una fuente o bandeja con papel manteca o rociada con aceite de coco</li>
+                        <li>Precalentar el horno a temperatura media. Hornear durante 30 minutos , dando vuelta la hamburguesas cuidadosamente a los 15 minutos</li>
+                        <li>Recomendación: Servir las hamburguesas con broccoli y batatas asadas</li>
+                    </ul>
+            </div>
+        </div>
+    </section>
+  </main>
+
+<!------------Footer------------>
+  <footer>
+    <%- include('./partials/footer') %>
+  </footer>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+   
+    AOS.init();
+  </script>
+</body>
+</html>

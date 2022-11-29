@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!------------Head------------>
+<%- include('./../partials/head') %>
+</head>
+<body>
+  <header>
+<!------------Header------------>
+    <%- include('./../partials/header') %>
+  </header>
+  <main>
+      <h3 class="offers">TODOS LOS PRODUCTOS</h3>
+      <!------------Sección de Productos------------>
+      <div class="section-cards">
+        <%products.forEach(function(products){%>
+           <div data-aos="fade-up" class="card">
+            <div class="imgBox">
+               <img src="images/productos/<%=products.image%>" alt="" class="product-img">
+            </div>
+            <div class="contentBox">
+              <h3><%=products.name%></h3>
+              <h2 class="price">$<%=products.price%></h2>
+              <a href="/products/productDetail/<%=products.idproducts%>" class="buy">COMPRAR</a>
+            </div>
+            </div>
+        <% }) %>
+      </div>
+  </main>
+
+<!------------Footer------------>
+
+  <footer>
+    <%- include('./../partials/footer') %>
+  </footer>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+   
+    AOS.init();
+  </script>
+</body>
+</html>

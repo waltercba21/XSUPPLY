@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!------------Head------------>
+<%- include('./partials/head') %>
+</head>
+
+<body>
+  <header>
+    <!------------Header------------>
+    <%- include('./partials/header') %>
+  </header>
+
+  <main>
+    <!------------Carousel------------>
+      <section class="home">
+        <div class="home-text" data-aos="fade-left">
+          <h3>TODOS LOS SUPLEMENTOS</h3>
+          <span> Conocé nuestros productos! </span>
+          <br>
+          <a href="/products" class="btn">COMPRAR <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </section>
+    
+    <!------------RECETAS------------>
+      <h3 class="offers">ULTIMAS OFERTAS</h3>
+        <div class="section-cards">
+          <%products.forEach(function(products){%>
+             <div data-aos="fade-up" class="card">
+              <div class="imgBox">
+                 <img src="images/productos/<%=products.image%>" alt="" class="product-img">
+              </div>
+              <div class="contentBox">
+                <h3><%=products.name%></h3>
+                <h2 class="price">$<%=products.price%></h2>
+                <a href="/products/productDetail/<%=products.idproducts%>" class="buy">COMPRAR</a>
+              </div>
+              </div>
+          <% }) %>
+        </div>
+        
+    <!------------RECETAS------------>
+      <section  class="about" id="about">
+        <div  class="row">
+          <div class="img-container" data-aos="fade-right">
+            <img src="/images/foto10.png" width="100%"></img >
+          </div>
+        <div class="content" data-aos="fade-left">
+            <h3>RECETAS</h3>
+            <p>
+              Gran variedad de recetas que te enseñan cómo cocinar alimentos saludables para tus objetivos fitness.</p>
+            <a href="./recetas" class="btn">CONOCELAS!</a>
+          </div>
+        </div>
+      </section>
+  </main>
+
+<!------------Footer------------>
+  <footer>
+    <%- include('./partials/footer') %>
+  </footer>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+   
+    AOS.init();
+  </script>
+</body>
+</html>

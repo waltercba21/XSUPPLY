@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!------------Head------------>
+<%- include('./../partials/head') %>
+</head>
+
+<body>
+  <header>
+    <!------------Header------------>
+    <%- include('./../partials/header') %>
+  </header>
+
+  <main>
+    <h3 class="cart-titulo" >MI CARRITO</h3>
+      <div class="productos">
+          <article data-aos="fade-right">
+            <img data-aos="fade-down" src="/images/prote.png" alt="prote" class="product_imagen">
+            <div class="cart-text">
+              <p class="cabezal-producto">Producto</p>
+              <h3 class="title">True Made Whey Protein Ena Isolate+concentrate 2.05 Lb 930g</h4>
+              <p class="precio">$3000</p>
+            </div>
+            <div class="cant-text">
+              <p class="cabezal-cantidad">Cantidad</p>
+              
+              <div class="cantidades">
+              <i class="fas fa-minus"></i>
+              <p>1</p>
+              <i class="fas fa-plus"></i>
+            </div>
+            <p class="delete">Quitar</p>
+            </div>
+          </article>
+
+          <div data-aos="fade-left" class="cart-total">
+            <p>Total: <span>$3000</span></p>
+            <br><br>
+            <button class="btn">COMPRAR</button>
+          </div>
+          
+        </div>
+  </main>
+
+<!------------Footer------------>
+<footer>
+  <%- include('./../partials/footer') %>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+   
+    AOS.init();
+  </script>
+</body>
+</html>
